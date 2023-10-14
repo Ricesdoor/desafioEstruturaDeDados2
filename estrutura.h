@@ -3,7 +3,7 @@
 
 #include "cliente.h"
 
-#define HASH_SIZE 100
+#define TABSIZE 1009
 
 typedef struct Estrutura Estrutura;
 Estrutura* cria_estrutura();

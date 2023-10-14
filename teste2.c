@@ -2,7 +2,7 @@
 #include "cliente.h"
 #include "estrutura.h"
 #include "lista.h"
-#include "node.h"
+#include "nodo.h"
 
 void imprime(Cliente *cliente) {
     printf("Nome      ; %40s\nBairro    : %40s\nQ Pessoas : %40d\nCriancas  : %40s\nRenda     : %40.2f\n\n", get_nome(cliente), get_bairro(cliente), get_pessoas(cliente), get_criancas(cliente) == 0 ? "Nao": "Sim", get_renda(cliente));

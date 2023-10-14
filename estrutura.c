@@ -1,45 +1,47 @@
 #include "estrutura.h"
+#include "cliente.h"
 #include "lista.h"
 #include <stdlib.h>
 
 struct Estrutura {
-    Lista* tabela_hash_nome[HASH_SIZE];
-    Lista* tabela_hash_bairro[HASH_SIZE];
-    Lista* tabela_hash_pessoas[HASH_SIZE];
-    Lista* tabela_hash_criancas[2]; // 0 ou 1 para presença de crianças
-    Lista* tabela_hash_renda[4];    // 1, 2, 3, ou 4 para faixas de renda
+    Lista *tabela_nome[TABSIZE];
+    Lista *tabela_bairro[TABSIZE];
+    Lista *tabela_q_pessoas[5];
+    Lista *tabela_criancas[2];
+    Lista *tabela_renda[4];
 };
 
+int hash(char *str) {
+    int temp = 0;
+    int high;
+
+    while(*str) {
+        temp = (temp<< 4) + *(str++);
+        if((high = temp & 0xf0000000)) {
+            temp ^= high >> 24;
+        }
+        temp &= ~high;
+    }
+    return temp % TABSIZE;
+}
+
 Estrutura* cria_estrutura() {
-    Estrutura* estrutura = (Estrutura*)malloc(sizeof(Estrutura));
-    if (estrutura == NULL) {
-        exit(1);
+    Estrutura *estrutura = (Estrutura *) malloc(sizeof(Estrutura));
+    if(estrutura != NULL) {
+        int i;
+        for(i = 0; i < TABSIZE; 1++) {
+            tabela_nome[1] = cria_lista();
+            tabela_bairro[i] = cria_lista();
+        }
+        for(i=0; i < 5; i++) {
+            tabela_q_pessoas[i] = cria_lista();
+        }
+        for(i = 0; i < 4; i++) {
+            tabela_criancas[i] = cria_lista();
+        }
+        for(i = 0; i < 4; i++) {
+            tabela_renda[i] = cria_lista();
+        }
     }
-
-    // Inicialize as tabelas hash
-    for (int i = 0; i < HASH_SIZE; i++) {
-        estrutura->tabela_hash_nome[i] = cria_lista();
-        estrutura->tabela_hash_bairro[i] = cria_lista();
-        estrutura->tabela_hash_pessoas[i] = cria_lista();
-    }
-
-    estrutura->tabela_hash_criancas[0] = cria_lista();
-    estrutura->tabela_hash_criancas[1] = cria_lista();
-
-    estrutura->tabela_hash_renda[0] = cria_lista();
-    estrutura->tabela_hash_renda[1] = cria_lista();
-    estrutura->tabela_hash_renda[2] = cria_lista();
-    estrutura->tabela_hash_renda[3] = cria_lista();
-
     return estrutura;
-}
-
-void insere_cliente(Estrutura* estrutura, Cliente* cliente) {
-}
-
-Lista* recupera_cliente(Estrutura* estrutura, int criterio, int valor, char* nome) {
-}
-
-void destroi_estrutura(Estrutura* estrutura) {
-    free(estrutura);
 }
