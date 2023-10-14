@@ -1,20 +1,9 @@
-#ifndef LISTA_H
-#define LISTA_H
+#include "node.h"
 
-#include "cliente.h"
+typedef struct Lista Lista;
 
-typedef struct Node Node;
-
-typedef struct {
-    Node *inicio;
-    Node *fim;
-    int quantidade;
-} Lista;
-
-Lista *cria_lista();
-void destroi_lista(Lista *lista);
-Node *get_inicio(Lista *lista);
+Lista* cria_lista();
 int get_quantidade(Lista *lista);
-void insere_lista(Lista *lista, Cliente *cliente);
-
-#endif
+Node* get_inicio(Lista *lista);
+void insere_inicio(Lista *lista, Node *node);
+void destroi_lista(Lista *lista);

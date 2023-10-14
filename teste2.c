@@ -2,7 +2,7 @@
 #include "cliente.h"
 #include "estrutura.h"
 #include "lista.h"
-#include "nodo.h"
+#include "node.h"
 
 void imprime(Cliente *cliente) {
     printf("Nome      ; %40s\nBairro    : %40s\nQ Pessoas : %40d\nCriancas  : %40s\nRenda     : %40.2f\n\n", get_nome(cliente), get_bairro(cliente), get_pessoas(cliente), get_criancas(cliente) == 0 ? "Nao": "Sim", get_renda(cliente));
@@ -241,13 +241,13 @@ Recuperação de clientes usando a faixa de renda bruta como chave de busca
     printf("-------------------------------------------\n\n");
     lista = recupera_cliente(estrutura, 5, 4, NULL);
     if(get_quantidade(lista) > 0) {
-        printf("Clientes que possuerm renda maior que 5000:\n");
+        printf("Clientes que possuem renda maior que 5000:\n");
         Node *cursor = get_inicio(lista);
         while(cursor != NULL) {
             imprime(get_data(cursor));
             cursor = get_next(cursor);
         }
     } else {
-        printf("Nenhum cliente recuperado com renda suoerior a 5000!\n");
+        printf("Nenhum cliente recuperado com renda superior a 5000!\n");
     }
 }

@@ -1,8 +1,8 @@
 #include "cliente.h"
 #include <stdlib.h>
-#include <strings.h>
+#include <string.h>
 
-struct Cliente_ {
+struct Cliente {
     char nome[41];
     char bairro[41];
     int q_pessoas;
@@ -11,12 +11,12 @@ struct Cliente_ {
     int faixa_renda;
 };
 
-Cliente* cria_cliente(char *nome, char *bairro, int qtd_pessoas, int criancas, double renda_bruta);{
+Cliente *cria_cliente(char *nome, char *bairro, int q_pessoas, int criancas, double renda_bruta){
     Cliente *cliente = (Cliente *) malloc(sizeof(Cliente));
     if(cliente != NULL) {
-        strcopy(cliente->nome, nome);
-        strcopy(cliente->bairro, bairro);
-        cliente->q_pessoas = qtd_pessoas;
+        strcpy(cliente->nome, nome);
+        strcpy(cliente->bairro, bairro);
+        cliente->q_pessoas = q_pessoas;
         cliente->criancas = criancas;
         cliente->renda_bruta = renda_bruta;
         if(renda_bruta < 2000.0) {
