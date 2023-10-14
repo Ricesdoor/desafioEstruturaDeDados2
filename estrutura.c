@@ -137,15 +137,15 @@ Lista* recupera_cliente(Estrutura *estrutura, int tipo_busca, int criterio_numer
                 return resultados; // Não há critério para buscar
             }
             index = hash(criterio_string) % TAB_SIZE;
-            Lista *bairro_lista = estrutura->tabela_bairro[index];
-            Node *bairro_cursor = get_inicio(bairro_lista);
-            while (bairro_cursor != NULL) {
-                Cliente *cliente = (Cliente *)get_data(bairro_cursor);
+            lista = estrutura->tabela_bairro[index];
+            cursor = get_inicio(lista);
+            while (cursor != NULL) {
+                Cliente *cliente = (Cliente *)get_data(cursor);
                 if (strcmp(criterio_string, get_bairro(cliente)) == 0) {
                     Node *result_node = cria_node(cliente);
                     insere_inicio(resultados, result_node);
                 }
-                bairro_cursor = get_next(bairro_cursor);
+                cursor = get_next(cursor);
             }
             break;
 

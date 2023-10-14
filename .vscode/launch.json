@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Usuário/Desktop/EricLuccaNavesFelipe2",
-      "program": "c:/Users/Usuário/Desktop/EricLuccaNavesFelipe2/build/Debug/outDebug",
+      "cwd": "c:/Users/Usuário/Documents/GitHub/desafioEstruturaDeDados2",
+      "program": "c:/Users/Usuário/Documents/GitHub/desafioEstruturaDeDados2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
