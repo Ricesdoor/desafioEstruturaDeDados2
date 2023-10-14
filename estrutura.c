@@ -153,13 +153,13 @@ Lista* recupera_cliente(Estrutura *estrutura, int tipo_busca, int criterio_numer
             if (criterio_numerico < 1 || criterio_numerico > 5) {
                 return resultados; // Critério numérico inválido
             }
-            Lista *qtd_pessoas_lista = estrutura->tabela_q_pessoas[criterio_numerico - 1];
-            Node *qtd_pessoas_cursor = get_inicio(qtd_pessoas_lista);
-            while (qtd_pessoas_cursor != NULL) {
-                Cliente *cliente = (Cliente *)get_data(qtd_pessoas_cursor);
+            lista = estrutura->tabela_q_pessoas[criterio_numerico - 1];
+            cursor = get_inicio(lista);
+            while (cursor != NULL) {
+                Cliente *cliente = (Cliente *)get_data(cursor);
                 Node *result_node = cria_node(cliente);
                 insere_inicio(resultados, result_node);
-                qtd_pessoas_cursor = get_next(qtd_pessoas_cursor);
+                cursor = get_next(cursor);
             }
             break;
 
@@ -167,13 +167,13 @@ Lista* recupera_cliente(Estrutura *estrutura, int tipo_busca, int criterio_numer
             if (criterio_numerico < 0 || criterio_numerico > 1) {
                 return resultados; // Critério numérico inválido
             }
-            Lista *criancas_lista = estrutura->tabela_criancas[criterio_numerico];
-            Node *criancas_cursor = get_inicio(criancas_lista);
-            while (criancas_cursor != NULL) {
-                Cliente *cliente = (Cliente *)get_data(criancas_cursor);
+            lista = estrutura->tabela_criancas[criterio_numerico];
+            cursor = get_inicio(lista);
+            while (cursor != NULL) {
+                Cliente *cliente = (Cliente *)get_data(cursor);
                 Node *result_node = cria_node(cliente);
                 insere_inicio(resultados, result_node);
-                criancas_cursor = get_next(criancas_cursor);
+                cursor = get_next(cursor);
             }
             break;
 
@@ -181,13 +181,13 @@ Lista* recupera_cliente(Estrutura *estrutura, int tipo_busca, int criterio_numer
             if (criterio_numerico < 1 || criterio_numerico > 4) {
                 return resultados; // Critério numérico inválido
             }
-            Lista *renda_lista = estrutura->tabela_renda[criterio_numerico - 1];
-            Node *renda_cursor = get_inicio(renda_lista);
-            while (renda_cursor != NULL) {
-                Cliente *cliente = (Cliente *)get_data(renda_cursor);
+            lista = estrutura->tabela_renda[criterio_numerico - 1];
+            cursor = get_inicio(lista);
+            while (cursor != NULL) {
+                Cliente *cliente = (Cliente *)get_data(cursor);
                 Node *result_node = cria_node(cliente);
                 insere_inicio(resultados, result_node);
-                renda_cursor = get_next(renda_cursor);
+                cursor = get_next(cursor);
             }
             break;
     }
